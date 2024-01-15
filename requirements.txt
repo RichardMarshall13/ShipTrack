@@ -4,3 +4,4 @@ plotly==5.18.0
 pandas==2.1.4
 nbformat==5.9.2
 streamlit==1.12.2
+polars==0.20.4
