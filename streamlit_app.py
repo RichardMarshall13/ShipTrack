@@ -17,7 +17,7 @@ st.title('Ship Tracker')
 
 # Allows the upload of CSV files
 st.write('Upload an AIS Broadcast Points CSV file from https://marinecadastre.gov/ais/')
-@st.cache_data
+#@st.cache_data
 uploaded_file = st.file_uploader("Upload AIS CSV file:")
 
 if uploaded_file:
