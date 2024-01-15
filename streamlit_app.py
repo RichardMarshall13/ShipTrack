@@ -1,4 +1,5 @@
 import streamlit as st
+import polars as pl
 import pandas as pd
 import datetime
 from geostructures import Coordinate, GeoPoint
@@ -21,11 +22,11 @@ st.write('Upload an AIS Broadcast Points CSV file from https://marinecadastre.go
 uploaded_file = st.file_uploader("Upload AIS CSV file:")
 @st.experimental_memo 
 def get_data(uploaded_file):
-    df = pd.read_csv(uploaded_file).sort_values(by=['BaseDateTime'])
+    lazy_df = pl.scan_csv("uploaded_file")
     return df
 if uploaded_file:
     # Reads the CSV and returns the length of the CSV
-    data = get_data(uploaded_file)
+    data = get_data(uploaded_file).collect().to_pandas().sort_values(by=['BaseDateTime'])
     st.write('Rows of Data: '+str(len(data)))
     
     # Allows users to dictate minimum length of ship in meters
