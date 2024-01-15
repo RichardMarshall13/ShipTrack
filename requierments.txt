@@ -1,0 +1,6 @@
+Geostructures==0.7.0
+plotly==5.18.0
+pandas==2.1.4
+mgrs==1.4.6
+nbformat==5.9.2
+streamlit==1.12.2
