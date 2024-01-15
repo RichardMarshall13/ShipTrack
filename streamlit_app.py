@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
 import datetime
-import mgrs
 from geostructures import Coordinate, GeoPoint
 from geostructures.collections import Track
 from geostructures.visualization.plotly import draw_collection
 import plotly.express as px
-import warnings
+import mgrs
 
 # Setup streamlit page to be wide by default
 st.set_page_config(layout='wide')
