@@ -19,11 +19,13 @@ st.title('Ship Tracker')
 st.write('Upload an AIS Broadcast Points CSV file from https://marinecadastre.gov/ais/')
 #@st.cache_data
 uploaded_file = st.file_uploader("Upload AIS CSV file:")
-
+def get_data(uploaded_file):
+    df = pd.read_csv(uploaded_file).sort_values(by=['BaseDateTime'])
+    return df
 if uploaded_file:
     @st.cache_data
     # Reads the CSV and returns the length of the CSV
-    data = pd.read_csv(uploaded_file).sort_values(by=['BaseDateTime'])
+    data = get_data(uploaded_file)
     st.write('Rows of Data: '+str(len(data)))
     
     # Allows users to dictate minimum length of ship in meters
