@@ -17,6 +17,7 @@ st.title('Ship Tracker')
 
 # Allows the upload of CSV files
 st.write('Upload an AIS Broadcast Points CSV file from https://marinecadastre.gov/ais/')
+@st.cache_data
 uploaded_file = st.file_uploader("Upload AIS CSV file:")
 
 if uploaded_file:
@@ -41,6 +42,7 @@ if uploaded_file:
         if len(select_ship) == 0:
             st.text('Choose at least 1 ship to start')
         else:
+            @st.cache_data
             # Filters the data based on the ships name, IMO, and MMSI to ensure we get all data
             df4= data[(data['IMO'].isin(df3['IMO'])) | (data['MMSI'].isin(df3['MMSI']) | (data['VesselName'].isin(df3['VesselName'])))]
             # Formats date time to MM/DD/YYY hh:mm:ss
