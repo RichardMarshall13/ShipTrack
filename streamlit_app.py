@@ -23,7 +23,7 @@ uploaded_file = st.file_uploader("Upload AIS CSV file:")
 @st.experimental_memo 
 def get_data(uploaded_file):
     lazy_df = pl.scan_csv("uploaded_file")
-    return df
+    return lazy_df
 if uploaded_file:
     # Reads the CSV and returns the length of the CSV
     data = get_data(uploaded_file).collect().to_pandas().sort_values(by=['BaseDateTime'])
