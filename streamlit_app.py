@@ -21,7 +21,7 @@ st.write('Upload an AIS Broadcast Points CSV file from https://marinecadastre.go
 uploaded_file = st.file_uploader("Upload AIS CSV file:")
 
 if uploaded_file:
-    
+    @st.cache_data
     # Reads the CSV and returns the length of the CSV
     data = pd.read_csv(uploaded_file).sort_values(by=['BaseDateTime'])
     st.write('Rows of Data: '+str(len(data)))
