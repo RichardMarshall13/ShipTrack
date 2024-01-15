@@ -19,7 +19,7 @@ st.title('Ship Tracker')
 st.write('Upload an AIS Broadcast Points CSV file from https://marinecadastre.gov/ais/')
 
 uploaded_file = st.file_uploader("Upload AIS CSV file:")
-@st.cache_data
+@st.experimental_memo 
 def get_data(uploaded_file):
     df = pd.read_csv(uploaded_file).sort_values(by=['BaseDateTime'])
     return df
